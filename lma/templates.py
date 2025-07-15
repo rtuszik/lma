@@ -5,7 +5,7 @@ def get_landing_page_html() -> str:
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>VibeAuth Enterprise - Quantum-Enhanced Behavioral Authentication Platform</title>
+        <title>LMA - Language Model Authentication </title>
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
         <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -146,7 +146,7 @@ def get_landing_page_html() -> str:
     </head>
     <body>
         <div class="container">
-            <div class="logo">VibeAuth</div>
+            <div class="logo">LMA</div>
             <div class="tagline">Next-Generation Identity Verification</div>
             
             <div class="description">
@@ -157,7 +157,6 @@ def get_landing_page_html() -> str:
                 class="auth-button" 
                 hx-post="/get-signin-modal" 
                 hx-target="#modal-container"
-                hx-indicator="#loading-indicator"
                 onclick="showLoading(this)"
             >
                 <span class="loading-spinner"></span>
