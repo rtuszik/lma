@@ -1,0 +1,10 @@
+services:
+    lma:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: lma-app
+        ports:
+            - "6969:6969"
+        restart: unless-stopped
+
