@@ -15,39 +15,43 @@ if DEBUG_MODE:
 else:
     logger = logging.getLogger(__name__)
 
-# Note: LiteLLM automatically picks up API keys from environment variables
-# Set base URLs if provided (using proper attribute access)
-openai_base = os.getenv("OPENAI_API_BASE") or os.getenv("LITELLM_PROXY_API_BASE")
-if openai_base:
-    setattr(litellm, "openai_api_base", openai_base)
-    if os.getenv("DEBUG_MODE"):
-        print(f"Set LiteLLM openai_api_base to: {openai_base}")
-
-anthropic_base = os.getenv("ANTHROPIC_API_BASE")
-if anthropic_base:
-    setattr(litellm, "anthropic_api_base", anthropic_base)
-
-cohere_base = os.getenv("COHERE_API_BASE")
-if cohere_base:
-    setattr(litellm, "cohere_api_base", cohere_base)
-
-gemini_base = os.getenv("GEMINI_API_BASE")
-if gemini_base:
-    setattr(litellm, "gemini_api_base", gemini_base)
+DEFAULT_MODEL = os.getenv("DEFAULT_MODEL", "gemini-2.5-flash")
 
 custom_headers = os.getenv("LITELLM_CUSTOM_HEADERS")
 if custom_headers:
     setattr(litellm, "headers", json.loads(custom_headers))
 
-DEFAULT_MODEL = os.getenv("DEFAULT_MODEL", "gpt-3.5-turbo")
+base_url_mappings = {
+    "openai_api_base": os.getenv("OPENAI_BASE_URL") or os.getenv("OPENAI_API_BASE"),
+    "anthropic_api_base": os.getenv("ANTHROPIC_BASE_URL") or os.getenv("ANTHROPIC_API_BASE"),
+    "cohere_api_base": os.getenv("COHERE_API_BASE"),
+    "gemini_api_base": os.getenv("GEMINI_API_BASE"),
+    "azure_api_base": os.getenv("AZURE_API_BASE"),
+    "together_api_base": os.getenv("TOGETHER_API_BASE"),
+    "huggingface_api_base": os.getenv("HUGGINGFACE_API_BASE"),
+    "databricks_api_base": os.getenv("DATABRICKS_API_BASE"),
+    "ollama_api_base": os.getenv("OLLAMA_API_BASE"),
+}
+
+for attr_name, base_url in base_url_mappings.items():
+    if base_url:
+        setattr(litellm, attr_name, base_url)
+        if DEBUG_MODE:
+            print(f"Set LiteLLM {attr_name} to: {base_url}")
 
 LITELLM_PROXY_API_KEY = os.getenv("LITELLM_PROXY_API_KEY")
+LITELLM_PROXY_API_BASE = os.getenv("LITELLM_PROXY_API_BASE")
+
+if LITELLM_PROXY_API_BASE:
+    setattr(litellm, "api_base", LITELLM_PROXY_API_BASE)
+    if DEBUG_MODE:
+        print(f"Set LiteLLM proxy base to: {LITELLM_PROXY_API_BASE}")
 
 __all__ = [
     "logger",
     "litellm",
-    "openai_base",
     "DEFAULT_MODEL",
     "LITELLM_PROXY_API_KEY",
+    "LITELLM_PROXY_API_BASE",
     "DEBUG_MODE",
 ]
