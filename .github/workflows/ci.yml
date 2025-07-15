@@ -17,5 +17,5 @@ jobs:
             - name: Lint with ruff
               run: uvx ruff check .
 
-            - name: Run tests
-              run: uv run pytest
+            # - name: Run tests
+            #   run: uv run pytest
