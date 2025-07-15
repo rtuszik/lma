@@ -6,10 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Production safety check - warn if DEBUG_MODE is enabled
 DEBUG_MODE = os.getenv("DEBUG_MODE", "false").lower() in ("true", "1", "yes", "on")
 if DEBUG_MODE:
-    # Warning for production deployments
     print("WARNING: DEBUG_MODE is enabled! This should NOT be used in production.")
     litellm.set_verbose = True
     logging.basicConfig(level=logging.DEBUG)

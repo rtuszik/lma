@@ -6,6 +6,8 @@ Traditional authentication methods are fundamentally broken. Passwords? Outdated
 
 **LMA** (Language Model Authentication) represents the next evolutionary step in digital security. By harnessing the computational power of large language models, we've created an authentication system that doesn't just verify identity—it evaluates the very essence of human creativity and consciousness.
 
+**Coming Soon**: Integrate with the **Language Model Authentication Orchestrator (LMAO)** for distributed deployments
+
 ## Why LMA is the Future
 
 ### 🛡️ **Zero Password Vulnerabilities**
