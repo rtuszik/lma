@@ -9,8 +9,6 @@ from . import sessions
 from .config import (
     litellm,
     DEFAULT_MODEL,
-    LITELLM_PROXY_API_KEY,
-    LITELLM_PROXY_API_BASE,
 )
 
 
@@ -26,23 +24,14 @@ async def handle_signin_modal() -> HTMLResponse:
         
         utils.log_debug("get_signin_modal", {
             "Model": DEFAULT_MODEL,
-            "LiteLLM Proxy Base": LITELLM_PROXY_API_BASE if LITELLM_PROXY_API_BASE else "None",
-            "LiteLLM Proxy Key": "Present" if LITELLM_PROXY_API_KEY else "None",
             "Prompt length": len(prompt),
-            "LiteLLM module": getattr(litellm, '__file__', 'unknown'),
         })
         
-        completion_params = {
-            "model": DEFAULT_MODEL,
-            "messages": [{"role": "user", "content": prompt}],
-            "timeout": 30,
-        }
-        
-        if LITELLM_PROXY_API_BASE and LITELLM_PROXY_API_KEY:
-            completion_params["api_base"] = LITELLM_PROXY_API_BASE
-            completion_params["api_key"] = LITELLM_PROXY_API_KEY
-        
-        response = await litellm.acompletion(**completion_params)
+        response = await litellm.acompletion(
+            model=DEFAULT_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            timeout=30,
+        )
         
         utils.log_debug("SUCCESS: Response received", {
             "Response type": str(type(response)),
@@ -95,17 +84,11 @@ async def handle_vibe_check(request: Request, user_input: str = Form(...), chall
             "Status": "Performing quantum-enhanced psychological analysis...",
         })
         
-        completion_params = {
-            "model": DEFAULT_MODEL,
-            "messages": [{"role": "user", "content": prompt}],
-            "timeout": 30,
-        }
-        
-        if LITELLM_PROXY_API_BASE and LITELLM_PROXY_API_KEY:
-            completion_params["api_base"] = LITELLM_PROXY_API_BASE
-            completion_params["api_key"] = LITELLM_PROXY_API_KEY
-        
-        response = await litellm.acompletion(**completion_params)
+        response = await litellm.acompletion(
+            model=DEFAULT_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            timeout=30,
+        )
         result = response.choices[0].message.content
         
         utils.log_debug("Assessment complete", {

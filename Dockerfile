@@ -20,6 +20,9 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 RUN chown -R app:app /app
 
+# Create cache directory for app user
+RUN mkdir -p /home/app/.cache/uv && chown -R app:app /home/app/.cache
+
 USER app
 
 ENV PATH="/app/.venv/bin:$PATH"
