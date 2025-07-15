@@ -22,10 +22,6 @@ Our proprietary neural architecture analyzes micro-patterns in human expression 
 
 Since LMA operates on natural language understanding rather than cryptographic primitives, it's inherently immune to quantum computing threats. We're already prepared for the post-quantum world.
 
-### 📊 **Scalable Intelligence**
-
-Unlike static authentication methods, LMA gets smarter with every interaction. Our system learns and evolves, continuously improving its ability to distinguish authentic human creativity from artificial responses.
-
 ### 🌍 **Universal Accessibility**
 
 No special hardware required. No phone dependencies. No geographical restrictions. If you can express a thought creatively, you can authenticate. True digital inclusion through AI.
@@ -33,10 +29,6 @@ No special hardware required. No phone dependencies. No geographical restriction
 ### ⚡ **Real-Time Threat Detection**
 
 Our advanced neural networks can detect bot attacks, social engineering attempts, and credential stuffing in real-time by analyzing the subtle linguistic fingerprints of inauthentic responses.
-
-### 🔒 **Revolutionary Session Management**
-
-Our breakthrough session isolation technology ensures that each authentication attempt is cryptographically unique and impossible to replay. Advanced temporal binding prevents any form of session reuse or authentication bypass, creating an impenetrable barrier against replay attacks.
 
 ### 🚫 **Anti-Replay Protection**
 
@@ -56,7 +48,7 @@ Our advanced AI system generates contextually relevant, impossible-to-predict au
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/rtuszik/lma
 cd lma
 uv sync --locked
 ```
@@ -70,7 +62,7 @@ cp .env.example .env
 Edit `.env` with your AI provider credentials:
 
 ```bash
-DEFAULT_MODEL="gpt-3.5-turbo"        # Challenge generation and vibe analysis
+DEFAULT_MODEL="Gemini-2.5-Flash"
 
 OPENAI_API_KEY="your-openai-key"
 ANTHROPIC_API_KEY="your-anthropic-key"
@@ -94,19 +86,12 @@ Navigate to `http://localhost:6969` to experience the future of authentication.
 - **Cryptographic session management** with JWT-based temporal binding
 - **Intelligent rate limiting** with per-endpoint optimization
 
-## Enterprise Readiness
-
-LMA is designed for scale. Our architecture supports:
-
-- Multi-tenant deployments
-- Horizontal scaling across AI providers
-- Real-time analytics and monitoring
-- Compliance with emerging AI governance frameworks
-- Zero-trust session architecture with automatic expiration
-- Advanced attempt limiting with intelligent backoff
-
 ## The Future is Now
 
 Authentication has remained unchanged for decades while every other aspect of technology has evolved. LMA represents the natural evolution of digital security—one that embraces the power of artificial intelligence to solve problems that traditional methods simply cannot address.
 
-### _Experience authentication as it was meant to be: intelligent, adaptive, and genuinely unsecure._
+### _Experience authentication as it was meant to be: intelligent, adaptive, and genuinely insecure._
+
+---
+
+Please don't actually use this anywhere...
