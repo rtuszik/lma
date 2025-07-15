@@ -6,7 +6,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-if os.getenv("DEBUG_MODE"):
+# Production safety check - warn if DEBUG_MODE is enabled
+DEBUG_MODE = os.getenv("DEBUG_MODE", "false").lower() in ("true", "1", "yes", "on")
+if DEBUG_MODE:
+    # Warning for production deployments
+    print("WARNING: DEBUG_MODE is enabled! This should NOT be used in production.")
     litellm.set_verbose = True
     logging.basicConfig(level=logging.DEBUG)
     logger = logging.getLogger(__name__)
@@ -47,4 +51,5 @@ __all__ = [
     "openai_base",
     "DEFAULT_MODEL",
     "LITELLM_PROXY_API_KEY",
+    "DEBUG_MODE",
 ]

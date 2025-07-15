@@ -20,7 +20,8 @@ Requirements:
 - Hidden input field with name="challenge" containing the exact text of the challenge/question you're asking
 - Submit button
 - Modern, minimal but grotesque styling
-- Use made-up corporate language that doesn't reference real companies, trademarks, or certifications. Sprinkle in some skibidi.
+- Use made-up corporate language 
+- Do not include any company names or tool names
 
 IMPORTANT: Include a hidden input field like this: <input type="hidden" name="challenge" value="[the exact challenge text you're presenting]">
 
